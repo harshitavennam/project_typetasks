@@ -5,13 +5,13 @@ interface Task {
   title: string;
   status: TaskStatus;
 }
-
-let nextId = 1;
-
 function addTask(tasks: Task[], title: string): Task[] {
-  const newTask: Task = { id: nextId++, title, status: "todo" };
+  const nextId =
+    tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.id)) + 1;
+  const newTask: Task = { id: nextId, title, status: "todo" };
   return [...tasks, newTask];
 }
+
 
 function completeTask(tasks: Task[], id: number): Task[] {
   return tasks.map((t) =>
