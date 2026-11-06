@@ -1,44 +1,43 @@
-type TaskStatus = "todo" | "in-progress" | "done";
+export type TaskStatus = "todo" | "in-progress" | "done";
 
-interface Task {
+export interface Task {
   id: number;
   title: string;
   status: TaskStatus;
 }
-function addTask(tasks: Task[], title: string): Task[] {
+
+export function addTask(tasks: Task[], title: string): Task[] {
   const nextId =
-    tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.id)) + 1;
+    tasks.length === 0 ? 1 : Math.max(...tasks.map((task) => task.id)) + 1;
   const newTask: Task = { id: nextId, title, status: "todo" };
   return [...tasks, newTask];
 }
 
-
-function completeTask(tasks: Task[], id: number): Task[] {
-  return tasks.map((t) =>
-    t.id === id ? { ...t, status: "done" as const } : t
+export function completeTask(tasks: Task[], id: number): Task[] {
+  return tasks.map((task) =>
+    task.id === id ? { ...task, status: "done" as const } : task
   );
 }
 
-function filterByStatus(tasks: Task[], status: TaskStatus): Task[] {
-  return tasks.filter((t) => t.status === status);
+export function filterByStatus(tasks: Task[], status: TaskStatus): Task[] {
+  return tasks.filter((task) => task.status === status);
 }
 
-// ---- My own extra operations ----
-
-function advanceTask(tasks: Task[], id: number): Task[] {
+export function advanceTask(tasks: Task[], id: number): Task[] {
   const next: Record<TaskStatus, TaskStatus> = {
-    "todo": "in-progress",
+    todo: "in-progress",
     "in-progress": "done",
-    "done": "done",
+    done: "done",
   };
-  return tasks.map((t) => (t.id === id ? { ...t, status: next[t.status] } : t));
+  return tasks.map((task) =>
+    task.id === id ? { ...task, status: next[task.status] } : task
+  );
 }
 
-function deleteTask(tasks: Task[], id: number): Task[] {
-  return tasks.filter((t) => t.id !== id);
+export function deleteTask(tasks: Task[], id: number): Task[] {
+  return tasks.filter((task) => task.id !== id);
 }
 
-function countByStatus(tasks: Task[], status: TaskStatus): number {
+export function countByStatus(tasks: Task[], status: TaskStatus): number {
   return filterByStatus(tasks, status).length;
 }
-
