@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f6fb"><meta name="description" content="A simple, focused task tracker built with TypeScript.">
+<title>TaskNest — Your day, in progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script>
+</head><body><main class="page-shell">
+<header class="topbar"><a class="brand" href="./" aria-label="TaskNest home"><span class="brand-mark">T</span><span>tasknest</span></a><span class="top-note">A little progress, every day.</span></header>
+<section class="hero" aria-labelledby="page-title"><p class="eyebrow">YOUR PERSONAL WORKSPACE</p><h1 id="page-title">Make room for<br><span>what matters.</span></h1><p class="hero-copy">One clear list. One next step. You’ve got this.</p></section>
+<section class="board" aria-label="Task manager"><div class="board-heading"><div><p class="section-kicker">THE PLAN</p><h2>Today’s tasks <span id="total-count" class="count-pill">0</span></h2></div><span class="board-date">STAY IN MOTION ↗</span></div>
+<form class="add-row" onsubmit="return false"><label class="sr-only" for="task-title">Task name</label><input id="task-title" type="text" placeholder="What needs your attention?" maxlength="120" autocomplete="off"><button id="add-task" type="button">Add task <span aria-hidden="true">＋</span></button></form>
+<nav id="filters" class="filters" aria-label="Filter tasks"></nav><ul id="task-list" class="task-list" aria-live="polite"></ul><p id="empty-state" class="empty-state">Nothing here yet. Add a task and make a start ✨</p></section>
+<footer class="footer"><span>BUILT WITH CARE & TYPESCRIPT</span><span>Small steps count.</span></footer>
+</main></body></html>
