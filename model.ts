@@ -30,7 +30,7 @@ export function advanceTask(tasks: Task[], id: number): Task[] {
     done: "done",
   };
   return tasks.map((task) =>
-    task.id === id ? { ...task, status: next[task.status] } : task
+    task.id === id ? { ...task, status: next[task.status] ?? task.status } : task
   );
 }
 
