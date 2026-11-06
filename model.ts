@@ -7,8 +7,13 @@ export interface Task {
 }
 
 export function addTask(tasks: Task[], title: string): Task[] {
-  const nextId =
-    tasks.length === 0 ? 1 : Math.max(...tasks.map((task) => task.id)) + 1;
+  const usedIds = new Set(tasks.map((task) => task.id));
+  let nextId = 1;
+
+  while (usedIds.has(nextId)) {
+    nextId += 1;
+  }
+
   const newTask: Task = { id: nextId, title, status: "todo" };
   return [...tasks, newTask];
 }
